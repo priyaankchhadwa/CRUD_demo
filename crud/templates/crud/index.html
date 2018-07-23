@@ -1,0 +1,32 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'crud/style.css' %}" />
+
+<h1>Authors: </h1>
+
+{% if author_list %}
+<table class="auth_table">
+        <thead>
+            <tr>
+                <th style="width: auto">Name</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for author in author_list %}
+            <tr>
+                <td class="auth_table_td">{{ author.author_name }}</td>
+                <td class="auth_table_td"><a href="{% url 'crud:auth_details' author.id %}">view</a></td>
+                <td class="auth_table_td"><a href="{% url 'crud:edit_author' author.id %}">edit</a></td>
+                <td class="auth_table_td"><a href="{% url 'crud:delete_author' author.id %}">delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No authors present, add some.</p>
+{% endif %}
+
+<p><a href="{% url 'crud:add_author' %}"> Add new author</a></p>
