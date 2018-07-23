@@ -1,0 +1,19 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'crud/style.css' %}" />
+
+
+
+{% if book %}
+<table class="book_table">
+        <tbody>
+            {% for key in book.__dict__ %}
+            <tr>
+                <td>{{ key }}: {{ book.__dict__[key] }}</td>>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No books yet, add some.</p>
+{% endif %}
