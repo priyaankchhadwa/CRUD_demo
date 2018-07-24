@@ -43,3 +43,15 @@ def delete_author(request, author_id):
         author.delete()
         return redirect('crud:index')
     return render(request, 'crud/auth_delete.html', {'object': author})
+
+def book_details(request, author_id, book_id):
+    print(book_id)
+    try:
+        book = Author.objects.get(pk=author_id).book_set.get(pk=book_id)
+    except Exception as ex:
+        print(ex)
+    else:
+        context = {'book': book}
+        return render(request, 'crud/book_details.html', context)
+    
+    
