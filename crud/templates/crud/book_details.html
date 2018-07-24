@@ -2,18 +2,30 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'crud/style.css' %}" />
 
-
+<h1 style="padding-bottom: 0px; margin-bottom: 0px">{{ book.book_name }}</h1>
+<h3 style="margin-top: 0px"><span style="font-size: 90%">&nbsp;&nbsp;&nbsp;by </span>{{ book.author }}</h3>
 
 {% if book %}
 <table class="book_table">
         <tbody>
-            {% for key in book.__dict__ %}
             <tr>
-                <td>{{ key }}: {{ book.__dict__[key] }}</td>>
+                <td class="book_table_td">Price: </td>
+                <td class="book_table_td">{{ book.price }}</td>
             </tr>
-            {% endfor %}
+            <tr>
+                <td class="book_table_td">Published on: </td>
+                <td class="book_table_td">{{ book.pub_date }}</td>
+            </tr>
+            <tr>
+                <td class="book_table_td">Edition: </td>
+                <td class="book_table_td">{{ book.edition }}</td>
+            </tr>
+            <tr>
+                <td class="book_table_td">Synopsis: </td>
+                <td class="book_table_td">{{ book.synopsis }}</td>
+            </tr>
         </tbody>
     </table>
 {% else %}
-    <p>No books yet, add some.</p>
+    <p>Book does not exist.</p>
 {% endif %}

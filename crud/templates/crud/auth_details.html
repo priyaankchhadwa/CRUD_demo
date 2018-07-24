@@ -2,11 +2,19 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'crud/style.css' %}" />
 
-<h1>{{ author.author_name }}:</h1>
+<h1>{{ author.salutation }} {{ author.author_name }}:</h1>
 
-<ul>
-{% for book in author.book_set.all %}
-    <li>{{ book.book_name }}</li>
-{% endfor %}
-</ul>
+<table class="book_table">
+    <tbody>
+        {% for book in author.book_set.all %}
+        <tr>
+            <td class="book_table_td">{{ forloop.counter }}. {{ book.book_name }}</td>
+            <td class="book_table_td"><a href="{% url 'crud:book_details' author.id book.id %}">view</a></td>
+            <td class="book_table_td">edit</td>
+            <td class="book_table_td">delete</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
+<p><a href="{% url 'crud:index' %}"> < Back</a></p>
