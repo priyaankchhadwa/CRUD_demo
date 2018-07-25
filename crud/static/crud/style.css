@@ -20,6 +20,7 @@ li {
     border: white;
     color: rgb(20, 20, 20);
     align-content: center;
+    white-space: nowrap
 }
 
 .book_table {
@@ -60,4 +61,11 @@ h1 {
 
 h3 {
     color: #363636
+}
+
+.auth_p {
+    color: #363636;
+    display: inline-block;
+    margin-top: 0px;
+    margin-bottom: 2em;
 }

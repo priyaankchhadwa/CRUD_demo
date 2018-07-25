@@ -14,6 +14,7 @@ class Author(models.Model):
     author_name = models.CharField(max_length=200)
     gender = models.CharField(max_length=1, choices=gender_choices)
     phone = models.BigIntegerField()
+    email = models.EmailField(default='asdf@asdf.com')
 
 class Book(models.Model):
     def __str__(self):

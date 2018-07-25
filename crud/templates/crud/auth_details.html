@@ -2,7 +2,12 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'crud/style.css' %}" />
 
-<h1>{{ author.salutation }} {{ author.author_name }}:</h1>
+<h1 style="margin-bottom: 0px;">{{ author.salutation }} {{ author.author_name }}:</h1>
+<h4 class="auth_p">{{ author.phone }}</h4>
+<h4 class="auth_p">{{ author.email }}</h4>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
 
 <table class="book_table">
     <tbody>
@@ -10,11 +15,11 @@
         <tr>
             <td class="book_table_td">{{ forloop.counter }}. {{ book.book_name }}</td>
             <td class="book_table_td"><a href="{% url 'crud:book_details' author.id book.id %}">view</a></td>
-            <td class="book_table_td">edit</td>
-            <td class="book_table_td">delete</td>
+            <td class="book_table_td"><a href="{% url 'crud:edit_book' author.id book.id %}">edit</a></td>
+            <td class="book_table_td"><a href="{% url 'crud:delete_book' author.id book.id %}">delete</a></td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 
-<p><a href="{% url 'crud:index' %}"> < Back</a></p>
+<p><a href="{% url 'crud:index' %}"> < Back</a> | <a href="{% url 'crud:add_book' author.id %}">add book</a></p>

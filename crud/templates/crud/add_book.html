@@ -1,0 +1,10 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'crud/style.css' %}" />
+
+<form method="post">
+{% csrf_token %}
+{{ form.as_p }}
+    <br />
+    <input type="submit" value="Submit" style="padding: .5em 1em;"/>
+</form>
